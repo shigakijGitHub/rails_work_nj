@@ -31,11 +31,12 @@ Things you may want to cover:
 * docker-comopse.yml
 * Gemfile
 * Gemfile.lock
+
 を用意したら以下のように進める。
+
 これでいけるはず。
 
 ```
-* docker-comopse.yml
 docker-compose run web rails new . --force --database=mysql --skip-bundle
 ```
 ```
