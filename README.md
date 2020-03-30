@@ -27,17 +27,21 @@ Things you may want to cover:
  https://www.youtube.com/watch?v=jmrGgPaZqro
 ↑この動画の概要欄に動画で使った参考ページのリンクある
 
+* Dockerfile
+* docker-comopse.yml
+* Gemfile
+* Gemfile.lock
+を用意したら以下のように進める。
+これでいけるはず。
 
 ```
+* docker-comopse.yml
 docker-compose run web rails new . --force --database=mysql --skip-bundle
 ```
 ```
 docker-compose build
 ```
-```
-docker-compose build
-```
-でこけたら、以下を実施
+docker-compose build でこけたら、以下を実施
 ```
 docker-compose run web bundle update
 ```
@@ -53,3 +57,6 @@ docker-compose run web bundle exec rails db:create
 mysql -u root -ppassword -h db
 ```# rails_work_nj
 # rails_work_nj
+
+
+
