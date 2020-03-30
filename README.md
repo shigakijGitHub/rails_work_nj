@@ -29,6 +29,12 @@ Things you may want to cover:
 
 
 ```
+docker-compose run web rails new . --force --database=postgresql --skip-bundle
+```
+```
+docker-compose build
+```
+```
 docker-compose build
 ```
 でこけたら、以下を実施
