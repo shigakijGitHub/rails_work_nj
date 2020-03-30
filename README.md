@@ -29,7 +29,7 @@ Things you may want to cover:
 
 
 ```
-docker-compose run web rails new . --force --database=postgresql --skip-bundle
+docker-compose run web rails new . --force --database=mysql --skip-bundle
 ```
 ```
 docker-compose build
