@@ -39,4 +39,5 @@ docker-compose run web bundle exec rails db:create
 コンテナに入ってからmysqlに入るには、/app配下で
 ```
 mysql -u root -ppassword -h db
-```
+```# rails_work_nj
+# rails_work_nj
