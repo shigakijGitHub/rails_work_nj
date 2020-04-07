@@ -3,7 +3,8 @@ FROM ruby:2.5.0
 # パッケージのインストール
 RUN apt-get update -qq && \
     apt-get install -y build-essential \
-                       nodejs
+                       nodejs \
+                       mariadb-client
 # コンテナ上の作業ディレクトリの作成
 RUN mkdir /app
 # 作業ディレクトリの指定

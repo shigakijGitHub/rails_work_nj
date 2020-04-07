@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'select/top'
+
   get 'test/test'
 
   get 'test_dir/test'
