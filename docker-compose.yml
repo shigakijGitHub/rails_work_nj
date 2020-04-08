@@ -23,6 +23,8 @@ services:
   db:
     # イメージの指定
     image: mysql:5.7
+    # 文字コードをutf8mb4に指定
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     # PC上にDBの内容を保持する設定
     volumes:
       - ./db-volume:/var/lib/mysql
