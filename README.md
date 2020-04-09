@@ -58,3 +58,16 @@ docker-compose run web bundle exec rails db:create
 mysql -u root -ppassword -h db
 ```
 
+---
+
+docker-compose upしたときにtmp/pids/server.pidを確認してくださいと出たときは下記のコマンドを実行してサーバーファイルを消す
+```
+rm -f tmp/pids/server.pid
+```
+[参考](https://qiita.com/paranishian/items/862ce4de104992df48e1)
+
+
+コンテナを一括削除するとき
+```
+docker rm $(docker ps -aq)
+```
