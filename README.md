@@ -71,3 +71,11 @@ rm -f tmp/pids/server.pid
 ```
 docker rm $(docker ps -aq)
 ```
+
+## ロゴ
+
+こんなふうに使うとよさそうか
+https://matome.naver.jp/odai/2137235809433069901
+
+scssの書き方
+https://qiita.com/nchhujimiyama/items/8a6aad5abead39d1352a
