@@ -6,17 +6,21 @@
         <p>※複数選択可能</p>
     </div>
     <div class="team-list">
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-        <div class="col-md-4"><%= image_tag 'kashima-antlers.png' , :size => '120x120'%></div>
-    </div>
-    <div class="form">
-    <%= button_to "登録する>>",{controller: "logs", action: "top" }, {method: :get, class: "btn-primary"}%>
+        <% @teams.each do |team| %>
+            <div class="col-md-3">
+                <div class="each-team btn">
+                    <div class="each-team-logo">
+                    <%= image_tag team.team_logo_url, class: 'each-team-logo-img' %>
+                    </div>
+                    <%= team.team_name %>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>
+
+    
+<div class="form">
+    <%= button_to "登録する>>",{controller: "logs", action: "top" }, {method: :get, class: "form-btn"} %>
+</div>
+
