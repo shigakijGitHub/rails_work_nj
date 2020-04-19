@@ -24,8 +24,14 @@ class LogsController < ApplicationController
             agm.team_id_home AS teamIdHome,
             agm.team_id_away AS TeamIdAway,
             agm.stadiam_name AS stadiamName,
-            agm.game_date    AS gameDate
-         FROM all_game_master agm
+            agm.game_date    AS gameDate,
+            (SELECT team_name
+             FROM team_master 
+             WHERE team_id = agm.team_id_home) AS teamNameHome,
+            (SELECT team_name
+             FROM team_master 
+             WHERE team_id = agm.team_id_away) AS teamNameAway
+        FROM all_game_master agm
             INNER JOIN game_details gd ON agm.game_id = gd.game_id
             INNER JOIN team_master tm ON tm.team_id = agm.team_id_home
          WHERE 
@@ -34,7 +40,9 @@ class LogsController < ApplicationController
          ORDER BY agm.game_date DESC 
         ',favos: favoArry]
         )
-        @allGames = ActiveRecord::Base.connection.select_all(query)
+    @allGames = ActiveRecord::Base.connection.select_all(query)
+
+    # 全チーム取得
 
     # 観戦履歴取得
     @userLogs = UsersLog.where(user_id:params[:user_id])
