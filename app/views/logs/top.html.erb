@@ -1,2 +1,75 @@
-<h1>Logs#top</h1>
-<p>Find me in app/views/logs/top.html.erb</p>
+<div class="container">
+    <div class="position-relative">
+        <h1>
+            <div><label>参戦：</label><label><%= @userLogs.length %>試合</label></div>
+        </h1>
+        <div class="favo-list-area">
+            <%# お気に入りロゴエリア start %>
+            <ul class="favo-list">
+                <% @logoArry.each do |logo| %>
+                <li class="favo-logo-list"><%= image_tag logo, class: 'favo-logo' %></li>
+                <% end %>
+            </ul>
+            <%# お気に入りロゴエリア end %>
+        </div>
+    </div>
+    <div class="main">
+        <% @allGames.each do |allGame| %>
+        <section class="match-list-wrap">
+            <div class="game-date align-l">
+                <h4 class="border-l-red">
+                    <% index = allGame["gameDate"].strftime("%u").to_i %> <%# 曜日算出 %>
+                    <%= allGame["gameDate"].strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+                </h4>
+            </div>
+            <table class="match-table align-l">
+                <!-- ここにaタグ仕込んでリンクにする start -->
+                <tbody>
+                    <tr>
+                        <td class="match">
+                            <table class="game-table">
+                                <thead>
+                                    <tr>
+                                        <th>対戦カード</th>
+                                        <th>スタジアム</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="club-name home-side">
+                                            <!-- ここにロゴ -->
+                                            <span class="embS embKashiwa"></span>
+                                            <!-- ここにホームチーム -->
+                                            北海道コンサドーレ札幌
+                                        </td>
+                                        <td class="point home-side">
+                                            <%= allGame["scoreHome"] %>
+                                        </td>
+                                        <td class="vs">VS</td>
+                                        <td class="point away-side">
+                                            <%= allGame["scoreAway"] %>
+                                        </td>
+                                        <td class="club-name away-side">
+                                            <!-- ここにロゴ -->
+                                            <span class="embS embKashiwa"></span>
+                                            <!-- ここにアウェイチーム -->
+                                            北海道コンサドーレ札幌
+                                        </td>
+                                        <td class="stadium">
+                                            <%= allGame["stadiamName"] %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- ここにaタグ仕込んでリンクにする end -->
+            </table>
+        </section>
+        <% end %>
+    </div>
+</div>
+<div class="form">
+    <%= button_to "select/topへ>>",{controller: "select", action: "top" }, {method: :get, class: "form-btn"} %>
+</div>
