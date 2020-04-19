@@ -25,12 +25,19 @@ class LogsController < ApplicationController
             agm.team_id_away AS TeamIdAway,
             agm.stadiam_name AS stadiamName,
             agm.game_date    AS gameDate,
+            CONCAT('gameId_', gd.game_id) AS gameId,
             (SELECT team_name
              FROM team_master 
              WHERE team_id = agm.team_id_home) AS teamNameHome,
             (SELECT team_name
              FROM team_master 
-             WHERE team_id = agm.team_id_away) AS teamNameAway
+             WHERE team_id = agm.team_id_away) AS teamNameAway,
+            (SELECT team_logo_url
+             FROM team_master 
+             WHERE team_id = agm.team_id_home) AS logoUrlHome,
+            (SELECT team_logo_url
+             FROM team_master 
+             WHERE team_id = agm.team_id_away) AS logoUrlAway
         FROM all_game_master agm
             INNER JOIN game_details gd ON agm.game_id = gd.game_id
             INNER JOIN team_master tm ON tm.team_id = agm.team_id_home
