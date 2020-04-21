@@ -25,7 +25,7 @@ class LogsController < ApplicationController
             agm.team_id_away AS TeamIdAway,
             agm.stadiam_name AS stadiamName,
             agm.game_date    AS gameDate,
-            CONCAT('gameId_', gd.game_id) AS gameId,
+            gd.game_id       AS gameId,
             (SELECT team_name
              FROM team_master 
              WHERE team_id = agm.team_id_home) AS teamNameHome,
@@ -44,7 +44,7 @@ class LogsController < ApplicationController
          WHERE 
             agm.team_id_away IN (:favos)
             AND agm.team_id_home IN (:favos)
-         ORDER BY agm.game_date DESC 
+         ORDER BY agm.game_date ASC 
         ',favos: favoArry]
         )
     @allGames = ActiveRecord::Base.connection.select_all(query)
