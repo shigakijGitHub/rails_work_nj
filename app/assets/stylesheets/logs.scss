@@ -50,6 +50,7 @@ table {
 
 .game-table {
     padding-left: 30px;
+    width: 100%;
 }
 
 
@@ -110,6 +111,10 @@ table {
     text-align: center;
     height:60px;
     width:60px;
+}
+
+.visited {
+    background-color: red;
 }
 
 .form{

@@ -17,15 +17,18 @@
     </div>
     <div class="main">
         <% @allGames.each do |allGame| %>
-        <section class="match-list-wrap" id="sectionGameId<%= allGame["gameId"] %>">
+        <% @userLogs.each do |userLog| %>
+        <% allGame["gameId"] == userLog.game_Id ? visitedFlg = true : visitedFlg = false %>
+        <section class="match-list-wrap <%= "visited" if visitedFlg == true %>" id="sectionGameId<%= allGame["gameId"] %>">
             <div class="game-date align-l">
                 <h4 class="border-l-red">
-                    <% index = allGame["gameDate"].strftime("%u").to_i %> <%# 曜日算出 %>
+                    <%# 曜日算出 %>
+                    <% index = allGame["gameDate"].strftime("%u").to_i %>
                     <%= allGame["gameDate"].strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
                 </h4>
             </div>
-            <table class=" match-table align-l">
-                <!-- ここにaタグ仕込んでリンクにする start -->
+            <table class="match-table align-l">
+                <!-- ここをリンクにする start -->
                 <tbody>
                     <tr>
                         <td class="match">
@@ -40,8 +43,9 @@
                                     <tr>
                                         <td class="club-name home-side">
                                             <%= image_tag allGame["logoUrlHome"], class: 'favo-logo' %>
-                                            <span class=""></span>
-                                            <%= allGame["teamNameHome"] %>
+                                            <span class="">
+                                                <%= allGame["teamNameHome"] %>
+                                            </span>
                                         </td>
                                         <td class="point home-side">
                                             <%= allGame["scoreHome"] %>
@@ -52,8 +56,9 @@
                                         </td>
                                         <td class="club-name away-side">
                                             <%= image_tag allGame["logoUrlAway"], class: 'favo-logo' %>
-                                            <span class=""></span>
-                                            <%= allGame["teamNameAway"] %>
+                                            <span class="">
+                                                <%= allGame["teamNameAway"] %>
+                                            </span>
                                         </td>
                                         <td class="stadium">
                                             <%= allGame["stadiamName"] %>
@@ -64,10 +69,11 @@
                         </td>
                     </tr>
                 </tbody>
-                <!-- ここにaタグ仕込んでリンクにする end -->
+                <!-- ここをリンクにする end -->
             </table>
-            <input type="hidden" name="gameId_<% allGame["gameId"] %>" value="<%= allGame["gameId"] %>">
+            <input type="hidden" name="gameId_<%= allGame["gameId"] %>" value="<%= allGame["gameId"] %>">
         </section>
+        <% end %>
         <% end %>
     </div>
 </div>
