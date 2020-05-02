@@ -35,31 +35,31 @@ class LogsController < ApplicationController
     query = ActiveRecord::Base.send(
         :sanitize_sql_array,
         ['SELECT 
-            gd.score_home    AS scoreHome,
-            gd.score_away    AS scoreAway,
-            agm.team_id_home AS teamIdHome,
-            agm.team_id_away AS TeamIdAway,
-            agm.stadiam_name AS stadiamName,
-            agm.game_date    AS gameDate,
-            gd.game_id       AS gameId,
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            agm.team_id_home AS team_id_home,
+            agm.team_id_away AS team_id_away,
+            agm.stadiam_name AS stadiam_name,
+            agm.game_date    AS game_date,
+            gd.game_id       AS game_id,
             (SELECT team_name
              FROM team_master 
-             WHERE team_id = agm.team_id_home) AS teamNameHome,
+             WHERE team_id = agm.team_id_home) AS team_name_home,
             (SELECT team_name
              FROM team_master 
-             WHERE team_id = agm.team_id_away) AS teamNameAway,
+             WHERE team_id = agm.team_id_away) AS team_name_away,
             (SELECT team_logo_url
              FROM team_master 
-             WHERE team_id = agm.team_id_home) AS logoUrlHome,
+             WHERE team_id = agm.team_id_home) AS team_logo_url_home,
             (SELECT team_logo_url
              FROM team_master 
-             WHERE team_id = agm.team_id_away) AS logoUrlAway
+             WHERE team_id = agm.team_id_away) AS team_logo_url_away
         FROM all_game_master agm
             INNER JOIN game_details gd ON agm.game_id = gd.game_id
             INNER JOIN team_master tm ON tm.team_id = agm.team_id_home
          WHERE 
             agm.team_id_away IN (:favos)
-            AND agm.team_id_home IN (:favos)
+            OR agm.team_id_home IN (:favos)
          ORDER BY agm.game_date ASC',
          favos: favoArry]
         )
