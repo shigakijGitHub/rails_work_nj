@@ -1,0 +1,2 @@
+class UsersLog < ApplicationRecord
+end
