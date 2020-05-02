@@ -7,9 +7,48 @@
     text-align: center;
 }
 
-.team-list{
-    
+.user-new-form{
+    display: grid;
+    grid-template-columns: 40% 30%;
+    gap:5px;
+    font-size:20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    label{
+        grid-column: 1 / 2;
+        text-align: right;
+    }
+
+    input{
+        grid-column: 2 / 3;
+    }
+
+    input[type="date"]::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+      }
+    input[type="date"]::-webkit-clear-button{
+        -webkit-appearance: none;
+      }
+
+    .form-sex{
+        display:flex;
+        display: -webkit-flex;
+
+        input{
+            width: 30px;
+            margin: 0px 5px 0px 5px;
+        }
+    }       
+
+
 }
+
+.favorite-teams-description{
+    font-size:10px;
+}
+
+
 
 .each-team{
     margin:20px;
@@ -52,6 +91,18 @@
     }
 }
 
-.description{
-    font-size:10px;
+.submit-btn{
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+    margin-top: 10px;
+    margin-bottom: 100px;
+
+    &:hover{
+        background: #67c5ff;
+        color: white;
+    }
 }
