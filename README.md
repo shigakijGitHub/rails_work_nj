@@ -92,11 +92,9 @@ app/assets/javascripts配下にあるファイルが全画面で読み込まれ�
  * 例) <%= javascript_include_tag "logsjs.js" %>
 
 ### 「コントローラー名＋.js」でなく「コントローラー名＋js.js」とする理由
-rails g controller コントローラー名 した際に```app/assets/javascripts/コントローラー名.coffee```が自動作成される
-
+rails g controller コントローラー名 した際に```app/assets/javascripts/コントローラー名.coffee```が自動作成される<br>
 coffeeファイルがあると、同じ名前で作ったjsファイルがあっても、coffeeファイルが優先的にRailsから呼び出されるため、jsファイルが呼び出されないくなる。
 参考:[RailsでJSファイルが読み込まれない！と困った話](https://qiita.com/s-yank/items/cf7cadbb6c6996d67cf7)
 
-（とりあえずこの命名ルール設けようと思うけど、coffeeスクリプト使えばJSファイル使う必要ないし、coffeeファイル消せば「コントローラー名＋.js」でいける
-
+（とりあえずこの命名ルール設けようと思うけど、coffeeスクリプト使えばJSファイル使う必要ないし、coffeeファイル消せば「コントローラー名＋.js」でいける<br>
 後々にはいらないファイル消したいから coffeeスクリプト使う or coffeeファイル消す のどっちかはしないといけないと思う）
