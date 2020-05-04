@@ -8,15 +8,15 @@
                 <%= f.text_field :login_id, :class => 'form-control'%>
                 <%= f.label :name, "名前：" %>
                 <%= f.text_field :name, :class => 'form-control'%>
-                <%= f.label :mail_adress, "メールアドレス：" %>
-                <%= f.email_field :mail_adress , :class => 'form-control'%>
+                <%= f.label :email, "メールアドレス：" %>
+                <%= f.email_field :email , :class => 'form-control'%>
                 <%= f.label :sex, "性別：" %>
                 <div class="form-sex">
                     <%= f.radio_button :sex ,"男", :class => 'form-control'%>男性
                     <%= f.radio_button :sex ,"女", :class => 'form-control woman'%>女性
                 </div>
-                <%= f.label :birth_date, "生年月日：" %>
-                <%= f.date_field :birth_date , :class => 'form-control'%>
+                <%= f.label :birthday, "生年月日：" %>
+                <%= f.date_field :birthday , :class => 'form-control'%>
                 <%= f.label :password, "パスワード：" %>
                 <%= f.password_field :password , :class => 'form-control'%>
             </div>
@@ -33,7 +33,7 @@
                                 <div class="each-team-logo">
                                 <%= image_tag team.team_logo_url, class: 'each-team-logo-img' %>
                                 </div>
-                                <%= f.radio_button :favorite1, team.team_id%>
+                                <%= f.radio_button :favorite1, team.id%>
                                 <%= f.label :favorite1 ,team.team_name %>
                             </div>
                         </div>
