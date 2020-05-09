@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   get 'test_dir/test'
 
+  # TODO user_idをcookieか何かから取得したい
   get 'logs/top/:user_id' => "logs#top"
+
+  get 'logs/detail/:game_id' => "logs#detail"
 
   post "select/new" => "select#create"
 

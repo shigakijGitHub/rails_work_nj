@@ -51,6 +51,10 @@ table {
 .game-table {
     padding-left: 30px;
     width: 100%;
+    background-color: #FFFAF0;
+    :hover{
+        cursor: pointer;
+    }
 }
 
 
