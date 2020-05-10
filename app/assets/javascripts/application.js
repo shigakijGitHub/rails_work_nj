@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+// /assets/javascripts配下を全て読み込ませるようにするには、「//= require_tree .」にする
+// require_tree .
 
 // Bootstrap
 //= require bootstrap-sprockets
