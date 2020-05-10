@@ -1,7 +1,7 @@
 class SelectController < ApplicationController
   def top
     # TeamMasterインスタンスの取得
-    @teams = TeamMaster.all
+    @teams = AllTeam.all
     # 新規ユーザーのインスタンスを定義
     @user = User.new
   end
@@ -20,7 +20,7 @@ class SelectController < ApplicationController
 
   def user_params
     # ユーザーインスタンスの生成に必須であるパラメータを定義
-    params.require(:user).permit(:login_id, :name, :mail_adress, :password, :favorite1)
+    params.require(:user).permit(:login_id, :name, :email, :password, :favorite1)
   end
 
 end
