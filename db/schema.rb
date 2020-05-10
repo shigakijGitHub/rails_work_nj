@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200502091048) do
+ActiveRecord::Schema.define(version: 20200510023916) do
 
   create_table "all_games", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "season_id", null: false
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20200502091048) do
 
   create_table "game_details", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "all_game_id", null: false
-    t.integer "winner_id", null: false
     t.integer "score_home", null: false
     t.integer "score_away", null: false
     t.integer "delete_flg", null: false
@@ -59,9 +58,15 @@ ActiveRecord::Schema.define(version: 20200502091048) do
     t.integer "favorite1", null: false
     t.integer "favorite2"
     t.integer "favorite3"
-    t.integer "delete_flg", null: false
+    t.integer "delete_flg"
     t.timestamp "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.timestamp "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "users_logs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|

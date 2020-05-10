@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  root to: 'select#index'
+  get 'select' => 'select#index'
+
   get 'select/top'
 
   get 'test/test'
