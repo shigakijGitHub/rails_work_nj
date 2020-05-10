@@ -44,7 +44,12 @@
                 <%= f.submit "登録する>>", :class => "submit-btn" %>
             <div>
         <% end %>
+
+
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->
 </div>
+
+
 
     
     

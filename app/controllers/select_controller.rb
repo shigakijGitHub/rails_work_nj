@@ -6,6 +6,15 @@ class SelectController < ApplicationController
     @user = User.new
   end
 
+  def index
+    # ログインしていたら、別ページにリダイレクト
+    if user_signed_in?
+      redirect_to select_top_path
+    end
+
+  end
+
+
   def create
     # 新規ユーザーのインスタンスの作成
     @user = User.new(user_params)
