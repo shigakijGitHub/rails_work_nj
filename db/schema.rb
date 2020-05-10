@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20200510023916) do
+=======
+ActiveRecord::Schema.define(version: 20200503150649) do
+>>>>>>> 14d33cadc67eee74eb81df1de78215ef2f103649
 
   create_table "all_games", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "season_id", null: false
