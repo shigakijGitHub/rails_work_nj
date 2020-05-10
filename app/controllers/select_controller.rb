@@ -9,9 +9,13 @@ class SelectController < ApplicationController
   def index
     # ログインしていたら、別ページにリダイレクト
     if user_signed_in?
-      redirect_to select_top_path
+      redirect_to logs_top_path(login)
     end
 
+  end
+
+  def login
+    @user = current_user.id
   end
 
 
