@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # TODO user_idをcookieか何かから取得したい
   get 'logs/top/:user_id' => "logs#top"
+  get 'logs/top/:user_id' => "logs#top", as: 'logs_top'
 
   get 'logs/detail/:game_id' => "logs#detail"
 
