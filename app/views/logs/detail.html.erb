@@ -1,2 +1,55 @@
-<h1>detail画面</h1>
-<h1>game_id:<%= @game_id%></h1>
+<div class="container">
+    <section class="match-list-wrap">
+        <div class="game-date align-l">
+            <h4 class="border-l-red">
+                <%# 曜日算出 %>
+                <% index = gameDetail["game_date"].strftime("%u").to_i %>
+                <%= gameDetail["game_date"].strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+            </h4>
+        </div>
+        <table class="match-table align-l" data-link="/logs/detail/<%= gameDetail["id"]%>">
+            <tbody>
+                <tr>
+                    <td class="match">
+                        <table class="game-table" id="game-table<%= gameDetail["id"] %>">
+                            <thead>
+                                <tr>
+                                    <th>対戦カード</th>
+                                    <th>スタジアム</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="club-name home-side">
+                                        <%= image_tag gameDetail["team_logo_url_home"], class: 'favo-logo' %>
+                                        <span class="">
+                                            <%= gameDetail["team_name_home"] %>
+                                        </span>
+                                    </td>
+                                    <td class="point home-side">
+                                        <%= gameDetail["score_home"] %>
+                                    </td>
+                                    <td class="vs">VS</td>
+                                    <td class="point away-side">
+                                        <%= gameDetail["score_away"] %>
+                                    </td>
+                                    <td class="club-name away-side">
+                                        <%= image_tag gameDetail["team_logo_url_away"], class: 'favo-logo' %>
+                                        <span class="">
+                                            <%= gameDetail["team_name_away"] %>
+                                        </span>
+                                    </td>
+                                    <td class="stadium">
+                                        <%= gameDetail["stadium_name"] %>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+</div>
