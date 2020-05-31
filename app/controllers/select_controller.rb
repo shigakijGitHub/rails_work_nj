@@ -15,8 +15,9 @@ class SelectController < ApplicationController
   end
 
   def login
-    @user = current_user.id
+    @current_user = current_user.id
   end
+
 
 
   def create

@@ -72,7 +72,7 @@ rm -f tmp/pids/server.pid
 docker rm $(docker ps -aq)
 ```
 
-# ロゴ
+## ロゴ
 
 こんなふうに使うとよさそうか
 https://matome.naver.jp/odai/2137235809433069901
@@ -80,7 +80,7 @@ https://matome.naver.jp/odai/2137235809433069901
 scssの書き方
 https://qiita.com/nchhujimiyama/items/8a6aad5abead39d1352a
 
-# 画面固有JSファイルの適用方法
+## 画面固有JSファイルの適用方法
 デフォルトのapp/assets/javascripts/application.jsに記載されている```//= require_tree .```では、
 app/assets/javascripts配下にあるファイルが全画面で読み込まれてしまうらしい。
 ← バグの原因になりうる。
@@ -98,3 +98,7 @@ coffeeファイルがあると、同じ名前で作ったjsファイルがあっ
 
 （とりあえずこの命名ルール設けようと思うけど、coffeeスクリプト使えばJSファイル使う必要ないし、coffeeファイル消せば「コントローラー名＋.js」でいける<br>
 後々にはいらないファイル消したいから coffeeスクリプト使う or coffeeファイル消す のどっちかはしないといけないと思う）
+
+## deviseの新規登録/ログイン後のリダイレクト処理
+
+参照先は[こちら>>](# 参照：http://31webcreation.hatenablog.com/entry/set-page-after-login-and-logout)
