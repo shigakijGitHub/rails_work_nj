@@ -24,7 +24,7 @@
                     <%= allGame["game_date"].strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
                 </h4>
             </div>
-            <table class="match-table align-l" data-link="/logs/detail/<%= allGame["id"]%>">
+            <table class="match-table align-l" data-link="/logs/detail/<%= allGame["id"]%>/<%=@userInfo.id%>">
                 <tbody>
                     <tr>
                         <td class="match">
