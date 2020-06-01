@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  root :to => "select#index"
+
   get 'select/top'
 
   get 'test/test'
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'logs/detail/:game_id' => "logs#detail"
 
-  get 'select/new'
+  get 'select/new' => "select#index"
   
   post 'select/new' => "select#create"
 
