@@ -1,5 +1,8 @@
 class LogsController < ApplicationController
+
+  # ****************************************************
   # top画面表示
+  # ****************************************************
   def top
     # ユーザ情報取得
     @userInfo = getUserInfo(params[:user_id])
@@ -31,7 +34,9 @@ class LogsController < ApplicationController
     @weeks = getWeeks()
   end
 
+  # ****************************************************
   # detail画面表示
+  # ****************************************************
   def detail
     # TODO game_idの改竄チェック
     # ユーザ情報取得
@@ -43,8 +48,8 @@ class LogsController < ApplicationController
 
 
   # ユーザ情報返却
-  def getUserInfo
-    User.find(params[:user_id])
+  def getUserInfo(userId)
+    User.find(userId)
   end
 
   # 試合日程用の曜日リスト返却

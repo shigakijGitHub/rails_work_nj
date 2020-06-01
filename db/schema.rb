@@ -49,23 +49,22 @@ ActiveRecord::Schema.define(version: 20200530072755) do
   end
 
   create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.string "login_id", limit: 200, default: ""
-    t.string "password", limit: 1000, default: ""
-    t.string "name", limit: 30, default: ""
+    t.string "login_id", limit: 200, null: false
+    t.string "password", limit: 1000, null: false
+    t.string "name", limit: 30, null: false
     t.string "email", limit: 265, null: false
     t.integer "sex"
     t.date "birthday"
-    t.integer "favorite1"
+    t.integer "favorite1", null: false
     t.integer "favorite2"
     t.integer "favorite3"
-    t.integer "delete_flg"
+    t.integer "delete_flg", null: false
     t.timestamp "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.timestamp "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

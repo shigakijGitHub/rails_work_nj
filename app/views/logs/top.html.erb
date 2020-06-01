@@ -75,5 +75,6 @@
     <input type="hidden" name="visited" value="<%= @visitedList %>">
 </div>
 <div class="form">
+    <%= button_to "select/topへ>>",{controller: "select", action: "top" }, {method: :get, class: "form-btn"} %>
     <%= link_to "ログアウト>>",destroy_user_session_path, {method: :delete, class: "form-btn"} %>
 </div>
