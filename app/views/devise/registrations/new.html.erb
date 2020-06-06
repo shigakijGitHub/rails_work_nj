@@ -1,29 +1,90 @@
-<h2>Sign up</h2>
+<div class="container">
+    <div class="user-new">
+    <h2 class="user-new-title">新規ユーザー登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        
+        <div class="user-new-form">
+            <%= f.label :name, "名前：" %>
+            <%= f.text_field :name, :class => 'form-control'%>
+            <%= f.label :email, "メールアドレス：" %>
+            <%= f.email_field :email , :class => 'form-control'%>
+            <%= f.label :sex, "性別：" %>
+            <div class="form-sex">
+                <%= f.radio_button :sex ,"男", :class => 'form-control'%>男性
+                <%= f.radio_button :sex ,"女", :class => 'form-control woman'%>女性
+            </div>
+            <%= f.label :birthday, "生年月日：" %>
+            <%= f.date_field :birthday , :class => 'form-control'%>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+            <%= f.label :password, "パスワード" %>
+            <% if false %>
+            <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password",:class => 'form-control' %>
+            
+            <%= f.label :password_confirmation , "パスワード(確認)"%>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" , :class => 'form-control'%>
+        </div>
+        
+        <div class="favorite-teams">
+        <h2 class="favorite-teams-title">お気に入りクラブの登録</h2>
+        <div class="favorite-teams-description">
+            <p>お気に入りのクラブを登録してください。</p>
+        </div>
+        <div class="team-list">
+            <% @teams.each do |team| %>
+                <div class="col-md-3">
+                    <div class="each-team btn">
+                    <label>
+                      <div class="each-team-logo">
+                      <%= image_tag team.team_logo_url, class: 'each-team-logo-img' %>
+                      </div>
+                      <%= f.radio_button :favorite1, team.id,:id => 'team-logo-radio-btn'%>
+                      <%= f.label :favorite1 ,team.team_name %>
+                    </label>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        </div></br>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <% if false %>
+          # ****deviseのデフォルト****
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
 
-<%= render "devise/shared/links" %>
+          <div class="actions">
+            <%= f.submit "Sign up" %>
+          </div>
+          # ****deviseのデフォルト****
+        <% end  %>
+
+        <div class="col-md-12">
+            <%= f.submit "登録する>>", :class => "submit-btn" %>
+        <div>
+        
+      <% end %>
+
+    </div>
+    <%= render "devise/shared/links" %>
+</div>
+
