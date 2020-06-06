@@ -1,18 +1,18 @@
 <div class="container">
     <section class="match-list-wrap">
+        <% @gameDetail.each do |detail| %>
         <div class="game-date align-l">
-            <p><%=@gameDetail.game_date%></p>
             <h4 class="border-l-red">
                 <%# 曜日算出 %>
-                <% index = @gameDetail.game_date.strftime("%u").to_i %>
-                <%= @gameDetail.game_date.strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+                <% index = detail["game_date"].strftime("%u").to_i %>
+                <%= detail["game_date"].strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
             </h4>
         </div>
-        <table class="match-table align-l" data-link="/logs/detail/<%= @gameDetail.id%>">
+        <table class="match-table align-l">
             <tbody>
                 <tr>
                     <td class="match">
-                        <table class="game-table" id="game-table<%= @gameDetail.id %>">
+                        <table class="game-table" id="game-table<%= detail["id"] %>">
                             <thead>
                                 <tr>
                                     <th>対戦カード</th>
@@ -22,26 +22,26 @@
                             <tbody>
                                 <tr>
                                     <td class="club-name home-side">
-                                        <%= image_tag @gameDetail.team_logo_url_home, class: 'favo-logo' %>
+                                        <%= image_tag detail["team_logo_url_home"], class: 'favo-logo' %>
                                         <span class="">
-                                            <%= @gameDetail.team_name_home %>
+                                            <%= detail["team_name_home"] %>
                                         </span>
                                     </td>
                                     <td class="point home-side">
-                                        <%= @gameDetail.score_home %>
+                                        <%= detail["score_home"] %>
                                     </td>
                                     <td class="vs">VS</td>
                                     <td class="point away-side">
-                                        <%= @gameDetail.score_away %>
+                                        <%= detail["score_away"] %>
                                     </td>
                                     <td class="club-name away-side">
-                                        <%= image_tag @gameDetail.team_logo_url_away, class: 'favo-logo' %>
+                                        <%= image_tag detail["team_logo_url_away"], class: 'favo-logo' %>
                                         <span class="">
-                                            <%= @gameDetail.team_name_away %>
+                                            <%= detail["team_name_away"] %>
                                         </span>
                                     </td>
                                     <td class="stadium">
-                                        <%= @gameDetail.stadium_name %>
+                                        <%= detail["stadium_name"] %>
                                     </td>
                                 </tr>
                             </tbody>
@@ -50,6 +50,7 @@
                 </tr>
             </tbody>
         </table>
+        <% end %>
     </section>
 
 

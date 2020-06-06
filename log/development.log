@@ -23738,3 +23738,916 @@ ActionView::Template::Error (undefined method `game_date' for #<ActiveRecord::Re
     7:                 <% index = @gameDetail.game_date.strftime("%u").to_i %>
   
 app/views/logs/detail.html.erb:4:in `_app_views_logs_detail_html_erb__967206820770609499_70171211369080'
+Started GET "/logs/detail/52/6" for 172.25.0.1 at 2020-06-01 14:55:36 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"52", "user_id"=>"6"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = ('52')[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (38.8ms)
+Completed 500 Internal Server Error in 217ms (ActiveRecord: 12.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `game_date' for #<ActiveRecord::Result:0x00007fa401f6e378>):
+    1: <div class="container">
+    2:     <section class="match-list-wrap">
+    3:         <div class="game-date align-l">
+    4:             <p><%=@gameDetail.game_date%></p>
+    5:             <h4 class="border-l-red">
+    6:                 <%# 曜日算出 %>
+    7:                 <% index = @gameDetail.game_date.strftime("%u").to_i %>
+  
+app/views/logs/detail.html.erb:4:in `_app_views_logs_detail_html_erb__967206820770609499_70171192158020'
+  [1m[35m (1.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (25.9ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Started GET "/logs/detail/52/6" for 172.25.0.1 at 2020-06-01 15:23:33 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"52", "user_id"=>"6"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Completed 500 Internal Server Error in 872ms (ActiveRecord: 24.0ms)
+
+
+  
+NoMethodError (undefined method `put' for #<LogsController:0x00007fa4083e31a0>):
+  
+app/controllers/logs_controller.rb:130:in `selectGameDetail'
+app/controllers/logs_controller.rb:46:in `detail'
+Started GET "/logs/detail/52/6" for 172.25.0.1 at 2020-06-01 15:24:24 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"52", "user_id"=>"6"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (72.6ms)
+Completed 500 Internal Server Error in 378ms (ActiveRecord: 20.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `game_date' for nil:NilClass):
+    3:         <div class="game-date align-l">
+    4:             <h4 class="border-l-red">
+    5:                 <%# 曜日算出 %>
+    6:                 <% index = @gameDetail.game_date.strftime("%u").to_i %>
+    7:                 <%= @gameDetail.game_date.strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+    8:             </h4>
+    9:         </div>
+  
+app/views/logs/detail.html.erb:6:in `_app_views_logs_detail_html_erb__967206820770609499_46923795809340'
+Started GET "/logs/detail/52/6" for 172.25.0.1 at 2020-06-01 15:25:14 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"52", "user_id"=>"6"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Completed 500 Internal Server Error in 290ms (ActiveRecord: 158.4ms)
+
+
+  
+NoMethodError (undefined method `score_away' for #<ActiveRecord::Result:0x00007fa3f437cb30>):
+  
+app/controllers/logs_controller.rb:131:in `selectGameDetail'
+app/controllers/logs_controller.rb:46:in `detail'
+Started GET "/logs/detail/52/6" for 172.25.0.1 at 2020-06-01 15:25:36 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"52", "user_id"=>"6"}
+  [1m[36mUser Load (15.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Completed 500 Internal Server Error in 542ms (ActiveRecord: 118.9ms)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/logs_controller.rb:131:in `selectGameDetail'
+app/controllers/logs_controller.rb:46:in `detail'
+Started GET "/logs/detail/52/6" for 172.25.0.1 at 2020-06-01 15:25:53 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"52", "user_id"=>"6"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (8.0ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 27.1ms)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/logs_controller.rb:131:in `selectGameDetail'
+app/controllers/logs_controller.rb:46:in `detail'
+Started GET "/logs/detail/52/6" for 172.25.0.1 at 2020-06-01 15:26:09 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"52", "user_id"=>"6"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (47.2ms)
+Completed 500 Internal Server Error in 299ms (ActiveRecord: 21.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `game_date' for nil:NilClass):
+    3:         <div class="game-date align-l">
+    4:             <h4 class="border-l-red">
+    5:                 <%# 曜日算出 %>
+    6:                 <% index = @gameDetail.game_date.strftime("%u").to_i %>
+    7:                 <%= @gameDetail.game_date.strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+    8:             </h4>
+    9:         </div>
+  
+app/views/logs/detail.html.erb:6:in `_app_views_logs_detail_html_erb__967206820770609499_70171177623340'
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Started GET "/logs/top/6" for 172.25.0.1 at 2020-06-02 09:00:50 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#top as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[36mAllTeam Load (0.9ms)[0m  [1m[34mSELECT  `all_teams`.* FROM `all_teams` WHERE `all_teams`.`id` = 1 LIMIT 1[0m
+  [1m[35m (7.6ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.team_id_away IN (1)
+            OR ag.team_id_home IN (1)
+         ORDER BY ag.game_date ASC[0m
+  [1m[36mUsersLog Load (1.7ms)[0m  [1m[34mSELECT `users_logs`.* FROM `users_logs` WHERE `users_logs`.`user_id` = 6[0m
+  Rendering logs/top.html.erb within layouts/application
+  Rendered logs/top.html.erb within layouts/application (94.3ms)
+Completed 500 Internal Server Error in 469ms (ActiveRecord: 43.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    15:         </div>
+    16:     </div>
+    17:     <div class="main">
+    18:         <% @allGames.each do |allGame| %>
+    19:         <section class="match-list-wrap">
+    20:             <div class="game-date align-l">
+    21:                 <h4 class="border-l-red">
+  
+app/views/logs/top.html.erb:18:in `_app_views_logs_top_html_erb__2008393132672522012_70171192104040'
+Started GET "/logs/top/6" for 172.25.0.1 at 2020-06-02 09:01:56 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#top as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[36mAllTeam Load (0.6ms)[0m  [1m[34mSELECT  `all_teams`.* FROM `all_teams` WHERE `all_teams`.`id` = 1 LIMIT 1[0m
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.team_id_away IN (1)
+            OR ag.team_id_home IN (1)
+         ORDER BY ag.game_date ASC[0m
+  [1m[36mUsersLog Load (0.6ms)[0m  [1m[34mSELECT `users_logs`.* FROM `users_logs` WHERE `users_logs`.`user_id` = 6[0m
+  Rendering logs/top.html.erb within layouts/application
+  Rendered logs/top.html.erb within layouts/application (492.0ms)
+Completed 200 OK in 1774ms (Views: 1515.5ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:02:01 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (37.5ms)
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 2.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `game_date' for nil:NilClass):
+    3:         <div class="game-date align-l">
+    4:             <h4 class="border-l-red">
+    5:                 <%# 曜日算出 %>
+    6:                 <% index = @gameDetail.game_date.strftime("%u").to_i %>
+    7:                 <%= @gameDetail.game_date.strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+    8:             </h4>
+    9:         </div>
+  
+app/views/logs/detail.html.erb:6:in `_app_views_logs_detail_html_erb__967206820770609499_70171199261140'
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:06:15 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Completed 500 Internal Server Error in 96ms (ActiveRecord: 23.5ms)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/logs_controller.rb:131:in `selectGameDetail'
+app/controllers/logs_controller.rb:46:in `detail'
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:07:25 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Completed 500 Internal Server Error in 795ms (ActiveRecord: 758.7ms)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/logs_controller.rb:131:in `selectGameDetail'
+app/controllers/logs_controller.rb:46:in `detail'
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:10:53 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (56.4ms)
+Completed 500 Internal Server Error in 354ms (ActiveRecord: 15.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `game_date' for #<ActiveRecord::Result:0x00007fa401fd2d78>):
+    3:         <div class="game-date align-l">
+    4:             <h4 class="border-l-red">
+    5:                 <%# 曜日算出 %>
+    6:                 <% index = @gameDetail.game_date.strftime("%u").to_i %>
+    7:                 <%= @gameDetail.game_date.strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+    8:             </h4>
+    9:         </div>
+  
+app/views/logs/detail.html.erb:6:in `_app_views_logs_detail_html_erb__967206820770609499_70171192363160'
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:12:03 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 18.0ms)
+
+
+  
+TypeError (String can't be coerced into Integer):
+  
+app/controllers/logs_controller.rb:132:in `+'
+app/controllers/logs_controller.rb:132:in `block in selectGameDetail'
+app/controllers/logs_controller.rb:131:in `selectGameDetail'
+app/controllers/logs_controller.rb:46:in `detail'
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:12:41 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+SyntaxError (/app/app/controllers/logs_controller.rb:132: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+        puts a["score_home"] a["stadium_name"]
+                             ^
+/app/app/controllers/logs_controller.rb:138: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/logs_controller.rb:132: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/logs_controller.rb:138: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:15:54 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 19.7ms)
+
+
+  
+TypeError (String can't be coerced into Integer):
+  
+app/controllers/logs_controller.rb:132:in `+'
+app/controllers/logs_controller.rb:132:in `block in selectGameDetail'
+app/controllers/logs_controller.rb:131:in `selectGameDetail'
+app/controllers/logs_controller.rb:46:in `detail'
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:17:59 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (55.1ms)
+Completed 500 Internal Server Error in 293ms (ActiveRecord: 40.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `game_date' for #<ActiveRecord::Result:0x00007fa408240b40>):
+    3:         <div class="game-date align-l">
+    4:             <h4 class="border-l-red">
+    5:                 <%# 曜日算出 %>
+    6:                 <% index = @gameDetail.game_date.strftime("%u").to_i %>
+    7:                 <%= @gameDetail.game_date.strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+    8:             </h4>
+    9:         </div>
+  
+app/views/logs/detail.html.erb:6:in `_app_views_logs_detail_html_erb__967206820770609499_70171243952900'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:24:16 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (3.4ms)
+Completed 500 Internal Server Error in 243ms (ActiveRecord: 11.6ms)
+
+
+  
+SyntaxError (/app/app/views/logs/detail.html.erb:7: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+...Detail["game_date.strftime("%u")"].to_i 
+...                              ^
+/app/app/views/logs/detail.html.erb:7: syntax error, unexpected ']', expecting keyword_end
+...ail["game_date.strftime("%u")"].to_i 
+...                              ^
+/app/app/views/logs/detail.html.erb:59: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/logs/detail.html.erb:7: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+app/views/logs/detail.html.erb:7: syntax error, unexpected ']', expecting keyword_end
+app/views/logs/detail.html.erb:59: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:24:53 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (35.3ms)
+Completed 500 Internal Server Error in 175ms (ActiveRecord: 3.1ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of String into Integer):
+    4:         <div class="game-date align-l">
+    5:             <h4 class="border-l-red">
+    6:                 <%# 曜日算出 %>
+    7:                 <% index = @gameDetail["game_date"].strftime("%u").to_i %>
+    8:                 <%= @gameDetail["game_date"].strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+    9:             </h4>
+   10:         </div>
+  
+app/views/logs/detail.html.erb:7:in `block in _app_views_logs_detail_html_erb__967206820770609499_70171243158980'
+app/views/logs/detail.html.erb:3:in `_app_views_logs_detail_html_erb__967206820770609499_70171243158980'
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:26:01 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (65.8ms)
+Completed 500 Internal Server Error in 290ms (ActiveRecord: 3.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass):
+     5:             <h4 class="border-l-red">
+     6:                 <%# 曜日算出 %>
+     7:                 <% index = detail["game_date"].strftime("%u").to_i %>
+     8:                 <%= detail["game_date"].strftime("%Y年%m月%d日 (#{@weeks[index-1]})") %>
+     9:             </h4>
+    10:         </div>
+    11:         <table class="match-table align-l">
+  
+app/views/logs/detail.html.erb:8:in `block in _app_views_logs_detail_html_erb__967206820770609499_70171191344600'
+app/views/logs/detail.html.erb:3:in `_app_views_logs_detail_html_erb__967206820770609499_70171191344600'
+Started GET "/logs/detail/1/6" for 172.25.0.1 at 2020-06-02 09:26:52 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#detail as HTML
+  Parameters: {"game_id"=>"1", "user_id"=>"6"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT 
+            gd.score_home    AS score_home,
+            gd.score_away    AS score_away,
+            ag.team_id_home  AS team_id_home,
+            ag.team_id_away  AS team_id_away,
+            ag.stadium_name  AS stadium_name,
+            ag.game_date     AS game_date,
+            gd.id            AS id,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_home) AS team_name_home,
+            (SELECT team_name
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_name_away,
+            (SELECT team_logo_url
+             FROM all_teams
+             WHERE id = ag.team_id_home) AS team_logo_url_home,
+            (SELECT team_logo_url
+             FROM all_teams 
+             WHERE id = ag.team_id_away) AS team_logo_url_away
+        FROM all_games ag
+            INNER JOIN game_details gd ON ag.id = gd.all_game_id
+            INNER JOIN all_teams at ON at.id = ag.team_id_home
+         WHERE 
+            ag.id = 1[0m
+  Rendering logs/detail.html.erb within layouts/application
+  Rendered logs/detail.html.erb within layouts/application (77.8ms)
+Completed 200 OK in 1118ms (Views: 999.8ms | ActiveRecord: 14.3ms)
+
+

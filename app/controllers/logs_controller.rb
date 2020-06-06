@@ -44,6 +44,10 @@ class LogsController < ApplicationController
 
     # 試合情報取得
     @gameDetail = selectGameDetail(params[:game_id])
+
+    # 試合日程用の曜日リスト取得
+    @weeks = getWeeks()
+
   end
 
 
@@ -122,11 +126,11 @@ class LogsController < ApplicationController
             INNER JOIN game_details gd ON ag.id = gd.all_game_id
             INNER JOIN all_teams at ON at.id = ag.team_id_home
          WHERE 
-            ag.id = (:gameId)',
-         gameId: gameId
+            ag.id = 1',
+         gameId: 1
         ]
         )
-    allGames = ActiveRecord::Base.connection.select_all(query)
+    gameDetail = ActiveRecord::Base.connection.select_all(query)
   end
 
 end

@@ -7,12 +7,11 @@ class ApplicationController < ActionController::Base
     
   end
 
-  
   def after_sign_up_path_for(resource)
     logs_top_path(login) #アカウント登録後のリダイレクト先
   end
 
   def login
-    @current_user = current_user.id
+    @current_user = current_user.id #ログインユーザー取得
   end
 end
