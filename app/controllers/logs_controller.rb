@@ -48,8 +48,21 @@ class LogsController < ApplicationController
     # 試合日程用の曜日リスト取得
     @weeks = getWeeks()
 
+    # 観戦履歴取得
+    @log = UsersLog.where(user_id:params[:user_id])
+
   end
 
+  # ****************************************************
+  # 保存処理
+  # ****************************************************
+  def create
+    @gameDetail
+  end
+
+  # ****************************************************
+  # 各メソッド
+  # ****************************************************
 
   # ユーザ情報返却
   def getUserInfo(userId)
@@ -72,7 +85,7 @@ class LogsController < ApplicationController
             ag.team_id_away  AS team_id_away,
             ag.stadium_name  AS stadium_name,
             ag.game_date     AS game_date,
-            gd.id            AS id,
+            gd.all_game_id   AS all_game_id,
             (SELECT team_name
              FROM all_teams 
              WHERE id = ag.team_id_home) AS team_name_home,
@@ -109,7 +122,7 @@ class LogsController < ApplicationController
             ag.team_id_away  AS team_id_away,
             ag.stadium_name  AS stadium_name,
             ag.game_date     AS game_date,
-            gd.id            AS id,
+            gd.all_game_id   AS all_game_id,
             (SELECT team_name
              FROM all_teams 
              WHERE id = ag.team_id_home) AS team_name_home,
