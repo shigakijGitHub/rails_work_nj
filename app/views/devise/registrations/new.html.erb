@@ -39,13 +39,16 @@
             <% @teams.each do |team| %>
                 <div class="col-md-3">
                     <div class="each-team btn">
-                    <label>
-                      <div class="each-team-logo">
-                      <%= image_tag team.team_logo_url, class: 'each-team-logo-img' %>
-                      </div>
-                      <%= f.radio_button :favorite1, team.id,:id => 'team-logo-radio-btn'%>
-                      <%= f.label :favorite1 ,team.team_name %>
-                    </label>
+                      
+                        <div class="each-team-logo">
+                        <label>
+                        <%= f.radio_button :favorite1, team.id,:id => 'team-logo-radio-btn'%>
+                        <%= image_tag team.team_logo_url, class: 'each-team-logo-img' %>
+                        <%= f.label :favorite1 ,team.team_name %>
+                        </label>
+                        </div>
+
+              
                     </div>
                 </div>
             <% end %>
@@ -79,12 +82,14 @@
         <% end  %>
 
         <div class="col-md-12">
-            <%= f.submit "登録する>>", :class => "submit-btn" %>
+            <%= f.submit "登録する>>", :class => "btn btn-default" %>
         <div>
         
       <% end %>
 
     </div>
+    </br>
+
     <%= render "devise/shared/links" %>
 </div>
 
