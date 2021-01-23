@@ -5,6 +5,7 @@
 .container{
     margin: 0 atuo;
     text-align: center;
+    margin-bottom:50px;
 }
 
 .user-new-form{
@@ -55,7 +56,27 @@
 
     &:hover{
         background: #fffafa;
+        opacity: 1.0;
     }
+
+    input{
+        display:none;
+    }
+
+    input + label{
+        opacity: 0.2;
+    }
+
+    input + label:hover{
+        opacity: 1.0;
+    }
+    
+    input:checked+label{
+        text-decoration: underline;
+        opacity: 1.0;
+    }
+
+    
 }
 
 .each-team-logo{
