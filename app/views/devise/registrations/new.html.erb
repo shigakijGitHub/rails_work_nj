@@ -38,22 +38,19 @@
         <div class="team-list">
             <% @teams.each do |team| %>
                 <div class="col-md-3">
+                <label>        
                     <div class="each-team btn">
-                      
-                        <div class="each-team-logo">
-                        <label>
-                        <%= f.radio_button :favorite1, team.id,:id => 'team-logo-radio-btn'%>
-                        <%= image_tag team.team_logo_url, class: 'each-team-logo-img' %>
+                        <%= f.radio_button :favorite1, team.id%>
                         <%= f.label :favorite1 ,team.team_name %>
-                        </label>
+                        <div class="each-team-logo">
+                            <%= image_tag team.team_logo_url, class: 'each-team-logo-img' %>
                         </div>
-
-              
                     </div>
+                </label>
                 </div>
             <% end %>
         </div>
-        </div></br>
+    </div></br>
 
         <% if false %>
           # ****deviseのデフォルト****
